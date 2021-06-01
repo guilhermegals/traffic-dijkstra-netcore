@@ -123,6 +123,7 @@ namespace Traffic.Dijkstra
         static void Main(string[] args) {
             int nNodes = 0, nRelations = 0;
             int source = 0, destiny = 0;
+            List<int> solutions = new List<int>();
             Graph graph;
             do {
                 string length = Console.ReadLine();
@@ -147,10 +148,14 @@ namespace Traffic.Dijkstra
                     string path = Console.ReadLine();
                     source = Convert.ToInt32(path.Split(' ')[0]);
                     destiny = Convert.ToInt32(path.Split(' ')[1]);
-
-                    Console.WriteLine("{0}", graph.ExecuteDijkstra(source, destiny));
+                    solutions.Add(graph.ExecuteDijkstra(source, destiny));
                 }
             } while (nNodes != 0 && nRelations != 0);
+
+            foreach (int solution in solutions)
+            {
+                Console.WriteLine("{0}", solution);
+            }
         }
     }
 }
